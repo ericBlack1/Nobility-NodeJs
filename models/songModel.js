@@ -13,6 +13,24 @@ const songSchema = new Schema({
   },
   genre: {
     type: String,
+    enum: [
+      // Traditional/Folk Music
+      'Bikutsi', 'Makossa', 'Assiko', 'Bend-skin', 'Mbaghalum',
+      'Mangambeu', 'Tchamassi', 'Ngon', 'Bafia', 'Njang',
+      
+      // Popular/Modern Genres
+      'Afrobeat', 'Afropop', 'Ndombolo', 'Zouk', 'Hip-Hop/Rap', 
+      'Afro-trap',
+      
+      // Gospel Music
+      'Cameroonian Gospel',
+      
+      // Fusion Genres
+      'Afro-jazz', 'Ethno-jazz', 'World Music',
+      
+      // Regional and Linguistic Influence
+      'Francophone Cameroonian Music', 'Anglophone Cameroonian Music'
+    ],
     trim: true
   },
   lyrics: {
