@@ -1,5 +1,5 @@
 // controllers/songController.js
-const Song = require('../models/Song');
+const Song = require('../models/songModel');
 const upload = require('../utils/songUpload');
 const fs = require('fs');
 const path = require('path');

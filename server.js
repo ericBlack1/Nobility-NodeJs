@@ -4,8 +4,7 @@ const userRoutes = require('./routes/userRoutes.js');  // Corrected to plural
 const profileRoutes = require('./routes/profileRoutes.js');
 const albumRoutes = require('./routes/albumRoutes.js');
 const songRoutes = require('./routes/songRoutes.js');
-const interactionRoutes = require('./routes/interactionRoutes.js');
-const searchRoutes = require('./routes/searchRoutes.js');
+
 require('dotenv').config();
 
 const app = express();

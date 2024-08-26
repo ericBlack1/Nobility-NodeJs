@@ -1,5 +1,5 @@
 // controllers/albumController.js
-const Album = require('../models/Album');
+const Album = require('../models/albumModel');
 const upload = require('../utils/albumUpload'); // Import the multer configuration
 
 // Create a new album

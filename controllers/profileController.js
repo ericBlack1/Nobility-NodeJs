@@ -1,5 +1,5 @@
 // controllers/profileController.js
-const Profile = require('../models/Profile');
+const Profile = require('../models/userProfileModel');
 const upload = require('../utils/profileUpload'); // Import the multer configuration
 
 // Get a user's profile
