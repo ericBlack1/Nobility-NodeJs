@@ -2,11 +2,16 @@
 const express = require('express');
 const router = express.Router();
 const albumController = require('../controllers/albumController.js');
+const authMiddleware = require('../middleware/authMiddleware.js')
 
-router.post('/', albumController.createAlbum);
+
 router.get('/:albumId', albumController.getAlbum);
+router.get('/', albumController.getAllAlbums);
+
+router.use(authMiddleware)
+router.post('/', albumController.createAlbum);
 router.put('/:albumId', albumController.updateAlbum);
 router.delete('/:albumId', albumController.deleteAlbum);
-router.get('/', albumController.getAllAlbums);
+
 
 module.exports = router;

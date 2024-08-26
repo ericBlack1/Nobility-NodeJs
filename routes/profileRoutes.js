@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 const profileController = require('../controllers/profileController');
 
+
 // Route to get a user's profile
 router.get('/:userId', profileController.getProfile);
 
