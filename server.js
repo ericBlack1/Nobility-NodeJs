@@ -2,6 +2,7 @@ const express = require('express');
 const connectDB = require('./config/db.js');
 const userRoutes = require('./routes/userRoute.js');
 const productRoutes = require('./routes/productRoute.js')
+const postRoutes = require('./routes/postRoute.js')
 require('dotenv').config();
 
 const app = express();
@@ -15,6 +16,7 @@ app.use(express.urlencoded({
 
 app.use('/api/users', userRoutes);
 app.use('/api/products', productRoutes);
+app.use('/api/posts', postRoutes)
 
 const PORT = process.env.PORT || 5000;
 
