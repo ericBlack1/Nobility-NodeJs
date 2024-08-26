@@ -20,8 +20,7 @@ app.use('/api/users', userRoutes);
 app.use('/api/profiles', profileRoutes);
 app.use('/api/albums', albumRoutes);
 app.use('/api/songs', songRoutes);
-app.use('/api/interactions', interactionRoutes);
-app.use('/api/search', searchRoutes);
+
 
 const PORT = process.env.PORT || 5000;
 
