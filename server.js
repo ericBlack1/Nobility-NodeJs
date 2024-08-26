@@ -24,6 +24,10 @@ app.use('/api/profiles', profileRoutes);
 app.use('/api/albums', albumRoutes);
 app.use('/api/songs', songRoutes);
 
+app.get("/", (req, res) => {
+    res.json({ message: "Hello World from Nobility" });
+})
+
 const PORT = process.env.PORT || 5000;
 
 const startServer = async () => {
