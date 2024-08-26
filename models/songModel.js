@@ -23,6 +23,10 @@ const songSchema = new Schema({
     type: String,
     trim: true
   },
+  audioPath: { // New field to store file path
+    type: String,
+    required: true
+  },
   createdAt: {
     type: Date,
     default: Date.now
