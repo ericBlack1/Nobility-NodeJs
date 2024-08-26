@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const User = require('../models/userSchema.js');
+const Profile = require('../models/userProfileModel.js')
 
 exports.registerUser = async (req, res) => {
   try {
@@ -21,7 +22,19 @@ exports.registerUser = async (req, res) => {
 
     await newUser.save();
 
-    res.status(201).json({ message: 'User registered successfully', user: newUser });
+    const newProfile = new Profile({
+      userId: newUser._id,  
+      username      
+    });
+
+    await newProfile.save();
+
+    res.status(201).json({
+      message: 'User registered successfully',
+      user: newUser,
+      profile: newProfile
+    });
+
   } catch (error) {
     res.status(500).json({ message: 'Server error', error: error.message });
   }
