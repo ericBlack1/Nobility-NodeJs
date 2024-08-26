@@ -1,8 +1,12 @@
+// routes/albumRoutes.js
 const express = require('express');
 const router = express.Router();
+const albumController = require('../controllers/albumController.js');
 
+router.post('/', albumController.createAlbum);
+router.get('/:albumId', albumController.getAlbum);
+router.put('/:albumId', albumController.updateAlbum);
+router.delete('/:albumId', albumController.deleteAlbum);
+router.get('/', albumController.getAllAlbums);
 
-router.post('/albums', albumController.createAlbum);
-router.get('/albums/:albumId', albumController.getAlbum);
-router.put('/albums/:albumId', albumController.updateAlbum);
-router.delete('/albums/:albumId', albumController.deleteAlbum);
+module.exports = router;
