@@ -9,6 +9,11 @@ const albumSchema = new Schema({
     required: true,
     trim: true
   },
+  user: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'User',
+    required: [true,"An album must have an author"]
+  },
   description: {
     type: String,
     trim: true
@@ -17,12 +22,6 @@ const albumSchema = new Schema({
     type: String, // URL to the album cover image
     trim: true
   },
-  songs: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'Song'
-    }
-  ],
   releaseDate: {
     type: Date,
     default: Date.now
@@ -32,6 +31,12 @@ const albumSchema = new Schema({
     default: Date.now
   }
 });
+
+albumSchema.virtual('songs',{
+  foreignField: 'album',
+  localField: '_id',
+  ref: 'Song'
+})
 
 // Create the Album model
 const Album = mongoose.model('Album', albumSchema);

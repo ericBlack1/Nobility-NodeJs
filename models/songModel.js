@@ -7,9 +7,14 @@ const songSchema = new Schema({
     required: true,
     trim: true
   },
+  user: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'User',
+    required: [true,"A song must have an author"]
+  },
   duration: {
     type: Number, // Duration in seconds
-    required: true
+    //required: true
   },
   genre: {
     type: String,
@@ -37,6 +42,11 @@ const songSchema = new Schema({
     type: String,
     trim: true
   },
+  album: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'Album',
+    required: [true, "A song must belong to an album"]
+  },
   language: {
     type: String,
     trim: true
@@ -50,6 +60,11 @@ const songSchema = new Schema({
     default: Date.now
   }
 });
+
+songSchema.pre(/^find/,async function(next){
+  this.populate('album')
+  next()
+})
 
 const Song = mongoose.model('Song', songSchema);
 module.exports = Song;

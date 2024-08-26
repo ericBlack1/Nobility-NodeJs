@@ -16,6 +16,7 @@ exports.createAlbum = async (req, res) => {
           title,
           description,
           coverImage,
+          user:req.user.id,
           releaseDate
         });
 
@@ -95,7 +96,7 @@ exports.deleteAlbum = async (req, res) => {
 exports.getAllAlbums = async (req, res) => {
   try {
     const filters = req.query; // You can implement filtering based on query parameters
-    const albums = await Album.find(filters).populate('songs');
+    const albums = await Album.find(filters);
     res.json(albums);
   } catch (error) {
     console.log(error)

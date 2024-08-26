@@ -10,7 +10,7 @@ exports.addSongToAlbum = async (req, res) => {
     if (err) {
       return res.status(400).json({ error: err });
     } else {
-      const { title, duration, genre, lyrics, language } = req.body;
+      const { title, duration, genre, lyrics, language, album } = req.body;
       const audioPath = req.file.path; // Getting the file path from multer
 
       try {
@@ -19,6 +19,8 @@ exports.addSongToAlbum = async (req, res) => {
           duration,
           genre,
           lyrics,
+          album,
+          user: req.user.id,
           language,
           audioPath // Storing the file path in the song model
         });
@@ -26,6 +28,7 @@ exports.addSongToAlbum = async (req, res) => {
         const savedSong = await newSong.save();
         res.status(201).json(savedSong);
       } catch (error) {
+        console.log(error)
         res.status(500).json({ error: 'Failed to add song' });
       }
     }
@@ -96,6 +99,7 @@ exports.getAllSongs = async (req, res) => {
     const songs = await Song.find(filters);
     res.json(songs);
   } catch (error) {
+    console.log(error)
     res.status(500).json({ error: 'Failed to fetch songs' });
   }
 };
