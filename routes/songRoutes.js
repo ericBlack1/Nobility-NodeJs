@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const profileController = require('../controllers/profileController.js');
+const songController = require('../controllers/songController');
 
-router.get('/:userId', profileController.getProfile);
-router.put('/:userId', profileController.updateProfile);
-router.get('/:userId/works', profileController.getUserWorks);
-router.get('/:userId/followers', profileController.getFollowers);
-router.get('/:userId/following', profileController.getFollowing);
+router.post('/add', songController.addSongToAlbum);
+router.get('/:id', songController.getSong);
+router.put('/:id', songController.updateSong);
+router.delete('/:id', songController.deleteSong);
+router.get('/', songController.getAllSongs);
 
 module.exports = router;

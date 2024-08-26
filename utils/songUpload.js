@@ -1,4 +1,3 @@
-// utils/uploadConfig.js
 const multer = require('multer');
 const path = require('path');
 
@@ -15,14 +14,19 @@ const upload = multer({
   storage: storage,
   limits: { fileSize: 10000000 }, // Limit file size to 10MB
   fileFilter: (req, file, cb) => {
-    const filetypes = /mp3|wav|flac/; // Allowed file types
+    // Allowed file types
+    const filetypes = /mp3|wav|flac/;
+    
+    // Check extension
     const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
-    const mimetype = filetypes.test(file.mimetype);
+    
+    // Check mime type
+    const mimetype = file.mimetype.startsWith('audio/');
 
     if (mimetype && extname) {
       return cb(null, true);
     } else {
-      cb('Error: Audio files only!');
+      cb('Error: Only audio files with mp3, wav, or flac extensions are allowed!');
     }
   }
 }).single('audioFile'); // 'audioFile' is the name of the input field for file upload
