@@ -98,6 +98,7 @@ exports.getAllAlbums = async (req, res) => {
     const albums = await Album.find(filters).populate('songs');
     res.json(albums);
   } catch (error) {
+    console.log(error)
     res.status(500).json({ error: 'Failed to fetch albums' });
   }
 };
